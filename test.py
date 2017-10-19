@@ -9,14 +9,13 @@ import matplotlib.pyplot as plt
 # Wielomian odpowiadajcy rozkladowi mionow
 class my_pdf(st.rv_continuous):
     def _pdf(self,x):
-        return x**2 
-        #7.89875 * 10**7 -630481 * x -15940.4 * x**2 + 147.356 * x**3 # Normalized over its range, in this case [0,90]
+        return (7.89875 * 10**7 -630481 * x -15940.4 * x**2 + 147.356 * x**3) / (3.09892*10**9)
 
 
 n = 100
 
 #Zdefiniowanie gestosc prawdopodobienstwa katow   
-rozkladkata = my_pdf(a=1, b=-1, name='my_pdf')
+rozkladkata = my_pdf(a=0, b=90, name='my_pdf')
 print rozkladkata
 #Generujemy n katow Beta (nachylenie wzgledem osi pionowej)
 beta = rozkladkata.rvs(size=(n, 1))
